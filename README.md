@@ -27,7 +27,7 @@ Run the script to:
 - Observe how inputs propagate through the network and produce an output.
 
 ```bash
-python neural_network.py
+python ForwardPropogation.py
 
 
 
