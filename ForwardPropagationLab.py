@@ -1,6 +1,10 @@
 # Installing Libraries
 import numpy as np
 from random import seed
+import pprint
+
+# Initializing the pprint module
+pp = pprint.PrettyPrinter(depth=4)
 
 # Generating a basic neural network with 3 layers; an input layer with 2 inputs, a hidden layer with 2 nodes, and an output layer with 1 node
 
@@ -120,7 +124,6 @@ def initialize_network(num_inputs, num_hidden_layers, num_nodes_hidden, num_node
 
         num_nodes_previous = num_nodes
 
-    print(network)
     return network
 
 # Generating a small neural network
@@ -138,6 +141,12 @@ def node_activation(weighted_sum):
 np.random.seed(12)
 inputs = np.around(np.random.uniform(size=5), decimals=2)
 
+# Printing the layers, weights, and biases
+print('The values of the neural network are:')
+pprint(small_network)
+print()
+
+# Printing the network inputs
 print('The inputs to the network are {}'.format(inputs))
 print()
 
@@ -162,7 +171,8 @@ def forward_propagation(network, inputs):
             print('The outputs of the nodes in the hidden layer number {} is {}'.format(layer.split('_')[1], layer_outputs))
         
         layer_inputs = layer_outputs # setting the output of this layer as the inputs of the next
-    
+
+    print() # Adding a space after all outputs of the layers are printed
     network_predictions = layer_outputs
     return network_predictions
 
