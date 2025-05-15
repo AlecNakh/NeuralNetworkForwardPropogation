@@ -1,2 +1,5 @@
-# NeuralNetworkForwardPropogation
-Sample python implementation to showcase forward propogation in neural networks
+# Neural Network Forward Propogation
+
+Python implementation to showcase forward propogation in neural networks
+
+
