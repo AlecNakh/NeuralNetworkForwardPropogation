@@ -127,7 +127,8 @@ def initialize_network(num_inputs, num_hidden_layers, num_nodes_hidden, num_node
     return network
 
 # Generating a small neural network
-small_network = initialize_network(5, 3, [3,2,3], 1)
+num_inputs = 5
+small_network = initialize_network(num_inputs, 3, [3,2,3], 1)
 
 # Function to compute the weighted sum of a node based on inputs, weights, and bias
 def compute_weighted_sum(inputs, weights, bias):
@@ -146,7 +147,32 @@ print('The values of the neural network are:')
 pprint(small_network)
 print()
 
-# Printing the network inputs
+# Asking the user if they want to generate inputs, or put their own inputs
+input_generation = input("Do you want to write your own input? Write 'Yes' or 'No'")
+# Loop to ensure user inputs either Yes or No
+while True:
+    # If the user inputs Yes, they then input the neural network input values
+    if input_generation.casefold() == "Yes".casefold():
+        temp = False
+        inputs = input("Enter the input values seperated by spaces: ").split()
+        while not temp:
+            # If there are enough inputs, then accept; otherwise, prompt user to provide the correct number of values
+            if len(inputs) == num_inputs:
+                temp = True
+            else:
+                inputs = input("You did not input the right number of values, please try again:").split()
+        # Convert the list into a numpy array of floats
+        inputs = np.array(inputs)
+        inputs = inputs.astype(float)
+        break
+    # If no, then the inputs are randomly generated
+    elif input_generation.casefold() == "No".casefold():
+        np.random.seed(12)
+        inputs = np.around(np.random.uniform(size=num_inputs), decimals=2)
+        break
+    input_generation = input("Invalid answer; please input either 'Yes' or 'No'")
+print()
+        
 print('The inputs to the network are {}'.format(inputs))
 print()
 
